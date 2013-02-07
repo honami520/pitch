@@ -1,0 +1,380 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	TemplateName="Other C/C++"
+	WorkingDir=".">
+	<Config
+		Name="Debug"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdpitch_e"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Config
+		Name="Release"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdpitch_e"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				OutputExts="*.o"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -O -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Rules Name="Compile">
+		<Rule
+			InputExts="*.s"
+			OutputExts="*.o"
+			LinkObject="1">
+			<Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+		</Rule>
+	</Rules>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm">
+			<F N="../usr/cog12864.c"/>
+			<F N="../usr/eeprom.c"/>
+			<F N="hot-foot/eeprom.d"/>
+			<F N="../usr/flash_eep.c"/>
+			<F N="hot-foot/flash_eep.d"/>
+			<F N="../usr/hot.c"/>
+			<F N="../usr/hot.h"/>
+			<F N="../usr/io.c"/>
+			<F N="../usr/io.h"/>
+			<F N="../usr/key.c"/>
+			<F N="../usr/key.h"/>
+			<F N="../usr/main.c"/>
+			<F N="hot-foot/main.d"/>
+			<F N="../usr/ntc.c"/>
+			<F N="../usr/ntc.h"/>
+			<F N="../usr/pwm.c"/>
+			<F N="../usr/pwm.h"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Release_Notes.html"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/Release_Notes.html"/>
+			<F N="hot-foot/startup_stm32f0xx.d"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Source/Templates/arm/startup_stm32f0xx.s"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Source/Templates/gcc_ride7/startup_stm32f0xx.s"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Source/Templates/iar/startup_stm32f0xx.s"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Source/Templates/TrueSTUDIO/startup_stm32f0xx.s"/>
+			<F N="../usr/stm32f0xx_it.c"/>
+			<F N="hot-foot/stm32f0xx_it.d"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c"/>
+			<F N="../usr/system_stm32f0xx.c"/>
+			<F N="hot-foot/system_stm32f0xx.d"/>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+			<F N="../Libraries/CMSIS/Include/arm_common_tables.h"/>
+			<F N="../Libraries/CMSIS/Include/arm_math.h"/>
+			<F N="../usr/cog12864.h"/>
+			<F N="../Libraries/CMSIS/Include/core_cm0.h"/>
+			<F N="../Libraries/CMSIS/Include/core_cm3.h"/>
+			<F N="../Libraries/CMSIS/Include/core_cm4.h"/>
+			<F N="../Libraries/CMSIS/Include/core_cm4_simd.h"/>
+			<F N="../Libraries/CMSIS/Include/core_cmFunc.h"/>
+			<F N="../Libraries/CMSIS/Include/core_cmInstr.h"/>
+			<F N="../usr/eeprom.h"/>
+			<F N="../usr/flash_eep.h"/>
+			<F N="../usr/main.h"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_adc.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_cec.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_comp.h"/>
+			<F N="../usr/stm32f0xx_conf.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_crc.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dac.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dbgmcu.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_dma.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_exti.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_flash.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_gpio.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_i2c.h"/>
+			<F N="../usr/stm32f0xx_it.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_iwdg.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_misc.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_pwr.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_rcc.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_rtc.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_spi.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_syscfg.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_tim.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_usart.h"/>
+			<F N="../Libraries/STM32F0xx_StdPeriph_Driver/inc/stm32f0xx_wwdg.h"/>
+			<F N="../Libraries/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h"/>
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters="">
+			<F N="../.git/objects/bf/022ba67fb405b50503be85bd55ba0ffffe2b8b"/>
+			<F N="../.git/objects/f8/047c00f3f0e2dc8c89c91d8704a11b813bc5b4"/>
+			<F N="../.git/objects/ec/063a0f47872818f04a7b5788d08a846902ba39"/>
+			<F N="../.git/objects/9d/06ac504c47b3a801a6fcf8dfa343daaeae0785"/>
+			<F N="../.git/objects/13/06c4c9fb050ad77efcf2808d7763aa716233b9"/>
+			<F N="../.git/objects/76/0ad8b8cfd99216bd7374161da8064cb4b102a8"/>
+			<F N="../.git/objects/d4/12071edf56ebc93e8bdbf0759aecd9391e19e5"/>
+			<F N="../.git/objects/b3/13c7ea7a7d388b517ebb90d69b024186dd1284"/>
+			<F N="../.git/objects/3b/1707eacc23bcfc86334c1908d02d6b5772cc51"/>
+			<F N="../.git/objects/3a/19dd6c0ed1803136a32880fcaab283107910ea"/>
+			<F N="../.git/objects/a2/19fe61a21e9d10f819c607e0c697cdb161d982"/>
+			<F N="../.git/objects/01/1b15fd8d2dcc72861a7e4ee8f76b0144805c80"/>
+			<F N="../.git/objects/c0/1b5a2f66fc6ec49f5817d3937d23c515e68baf"/>
+			<F N="../.git/objects/94/1b80c8d8a0bbe31e5c0a9b3ef20861455df71d"/>
+			<F N="../.git/objects/cf/1ecadee7d337a9c83ba33340358a0f13159f05"/>
+			<F N="../.git/objects/6d/2165ab7a5add29ecee55d9795adcd5041ee10b"/>
+			<F N="../.git/objects/57/23b6aafe52135bf979d7b4ae179dca9bbaa461"/>
+			<F N="../.git/objects/34/24abc12895354b36af0123b5e67af35130b76e"/>
+			<F N="../.git/objects/d7/2743143f81d74341cb37fd49d2e4d768e78f06"/>
+			<F N="../.git/objects/99/28b8cf8f5ab81324bcddd6e9a4cc53896353e5"/>
+			<F N="../.git/objects/b7/29c5e3e04d6d1056a0bb02e2f403e88032a9d4"/>
+			<F N="../.git/objects/d5/2ea1e08b7ec65bc7a52edf842cf58ddbd1b3cb"/>
+			<F N="../.git/objects/2a/305f8793b2a6710fa2ad94ce6adf17d59d6e8c"/>
+			<F N="../.git/objects/2a/31537e75672ef29d8fc1dee8da5ef20e6d893a"/>
+			<F N="../.git/objects/cb/33a5adccc4b63eadc259120c239871542f912a"/>
+			<F N="../.git/objects/9b/3418314d8a07e1c2abad9055dbd612f32cfdd2"/>
+			<F N="../.git/objects/75/370d98528ab71a3aef4fbc6b24770c9a14d9d5"/>
+			<F N="../.git/objects/82/3b361644bd7fbd6df18a573aeeb5d5242d3c0d"/>
+			<F N="../.git/objects/98/3e1c983df110c6c00974f2a4ff9d32e8f4ae92"/>
+			<F N="../.git/objects/24/3f377a822ed5240629a5487df8e04367b49c51"/>
+			<F N="../.git/objects/c8/42680a3bbdf07310dbe9336302b39dcd8f8d87"/>
+			<F N="../.git/objects/a1/448fc0c1a5115f3f75a99006cf49744bf7529d"/>
+			<F N="../.git/objects/9b/44a3fb4cac8c4b3d0b729e4f55efeda553ee2b"/>
+			<F N="../.git/objects/e0/45601759b70313d4e8035ce9b120090e38d84b"/>
+			<F N="../.git/objects/72/45c4f12bbc7b0cb1d9df77b62725fe84ce1454"/>
+			<F N="../.git/objects/ce/497d74deff3fba3bc587eff10ecf7e60d4e025"/>
+			<F N="../.git/objects/e0/4afaee6286ce461b2ab5f286c6f99b232f5ae0"/>
+			<F N="../.git/objects/28/574b1b38c8cf97734abf13e51eae40ebc81c3f"/>
+			<F N="../.git/objects/4a/59cbfb7248f1302d90ba33b8cad54e8a6b22be"/>
+			<F N="../.git/objects/09/5a5ce5f7a68ac9aa176ddf5471da7a763f4068"/>
+			<F N="../.git/objects/5f/5e43ce3e8a107ec022c5d4bfed212c6c790a4a"/>
+			<F N="../.git/objects/1c/688181affa27ae0e7195ae97f2cc7a487704db"/>
+			<F N="../.git/objects/10/6fe4d59d9ebab65b12e5ab3afa4fb77b4fb84d"/>
+			<F N="../.git/objects/4e/73705e4883dfb509dfe74360abb348d5ab53c1"/>
+			<F N="../.git/objects/e7/77119c8b370bf3a5d4957d3f19d1d2d96a2425"/>
+			<F N="../.git/objects/d4/7878efd8746e69d9694ef1b75bfee0c50eee25"/>
+			<F N="../.git/objects/ad/792a143c41df3a2440b744785f314ae48ae6e0"/>
+			<F N="../.git/objects/9d/7a19f9ae1218784a8e0e4b4defdc9359a1b245"/>
+			<F N="../.git/objects/8c/7b16388272c20828aa74f6b0ad51621e5cbfeb"/>
+			<F N="../.git/objects/86/7bb1c4520e4576a76d91676e60c6d09d346fbf"/>
+			<F N="../.git/objects/d2/80a5ea4869e52ade5518bc3b447b6c132ae516"/>
+			<F N="../.git/objects/88/819f9dd116dfdb713bf298e517870f1ba194ef"/>
+			<F N="../.git/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904"/>
+			<F N="../.git/objects/9e/82f4ed2c2e636f48758f2d6313d8eca93fbdba"/>
+			<F N="../.git/objects/14/89ebd3f42dad92f35bdf2c17650eecd02688c0"/>
+			<F N="../.git/objects/73/8d93989286fa68109cfd86d13f0b4bd7144ce8"/>
+			<F N="../.git/objects/5c/901a0e478259d2f99542ed00bd63fb295da951"/>
+			<F N="../.git/objects/9f/9105d22367442ac8fa1fcc479981a21f8f329a"/>
+			<F N="../.git/objects/f7/91b46e8dfe22dc59a2e34b70e33df81c8121df"/>
+			<F N="../.git/objects/ae/92877787a93be369adabfee43e47cdbd6f874a"/>
+			<F N="../.git/objects/80/94ff458c3b99beefe7b2ac19a5f8f4e8c2ffb7"/>
+			<F N="../.git/objects/cd/973c445e7cb7bda488639a8b583a1a5686bdfd"/>
+			<F N="../.git/objects/b1/9bf28cdeb3db387adb2b641bc9c6f88d14c6ad"/>
+			<F N="../.git/objects/75/9d0af38d5e992ddadf908b78e68edf5570ebea"/>
+			<F N="../.git/objects/ff/a03b6fd1eee44caf69a3bb26e17aa16678f5ec"/>
+			<F N="../.git/objects/35/a06bbd48ecc64a3b17fe9a35c487c8ef311bc1"/>
+			<F N="../.git/objects/a2/a1931a4cb57bbf82b195c5420227e5be60a7f4"/>
+			<F N="../.git/objects/8f/a4821db05accaa6b8e8fe741df98251239f98d"/>
+			<F N="../.git/objects/8b/a58bb7cb61414cfd6ee79ecc94a4619a9be8bf"/>
+			<F N="../.git/objects/da/aa1e01bf0519bc795fc138cd49577d750c7443"/>
+			<F N="../.git/objects/4d/abaec824f8ce633a1ae3626a50461d23a933e2"/>
+			<F N="../.git/hooks/applypatch-msg.sample"/>
+			<F N="../.git/objects/c9/b371ea0f62abccb9ed99220f26942da6387647"/>
+			<F N="../.git/objects/07/b5a365ee2d33070c9758442c0acc7cc93b7dbc"/>
+			<F N="../.git/objects/e7/b6765225e1f247ce9bebcd9f0ba0739dad566d"/>
+			<F N="../.git/objects/d5/bd1061f7ac95a5d7f5e5c646ef6f8a9c2b4f5b"/>
+			<F N="../.git/objects/31/c00ff6d3b1b48659aca071dcd1e45f6150a99f"/>
+			<F N="../.git/objects/d4/c0b41aacdcda13075de65bc80d7d3441106417"/>
+			<F N="../.git/objects/28/c79a0e7c96075bcf5b7c34a2d59476ae6510df"/>
+			<F N="../Libraries/CMSIS/CMSIS END USER LICENCE AGREEMENT.pdf"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS-SVD_Schema_1_0.xsd"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS_CM4_SIMD.htm"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS_Core.htm"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS_DebugSupport.htm"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS_History.htm"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS_Logo_Final.jpg"/>
+			<F N="../Libraries/CMSIS/Documentation/CMSIS_System_View_Description.htm"/>
+			<F N="../.git/hooks/commit-msg.sample"/>
+			<F N="../.git/config"/>
+			<F N="../.git/objects/9e/d077d6104293121ccd5577fafb41e7756791a2"/>
+			<F N="../.git/objects/22/d11b909775e8134030efe43c10b0c3776c3915"/>
+			<F N="../.git/objects/06/d2328cc2c8e057c381fc4a2bac5542d263b267"/>
+			<F N="../.git/objects/0d/d2bfe68bf4155682091f677fe56dd9ff8549a9"/>
+			<F N="../.git/objects/78/d2ef80ba610e050a3e33a80e1b16e3caba1e4a"/>
+			<F N="../.git/objects/9a/d44aa2c332804ca1105782df6aa3615838033a"/>
+			<F N="../.git/description"/>
+			<F N="../.git/objects/21/e26094738a8a193501e4f779cd455e85894596"/>
+			<F N="../.git/objects/89/e343d38dd9faadf8ed8c643f2c029836d1a8bd"/>
+			<F N="../.git/objects/7f/e3a1d2f74e1d56f5a2c6fb3c28a1db7f3d2c09"/>
+			<F N="../.git/objects/63/e3b0fdb419cfcc6299ac62955ca7fdd162ddf0"/>
+			<F N="../.git/objects/54/e9044bc260e0b6ae7b542d9ca9d33f3caf71bb"/>
+			<F N="hot-foot/eeprom.crf"/>
+			<F N="hot-foot/eeprom.o"/>
+			<F N="../.git/info/exclude"/>
+			<F N="../.git/objects/af/f05b4a48322fa8c6f689ae2b1c60ee9628f7b7"/>
+			<F N="../.git/objects/1c/f11b0e138a1559a22971e24753f2413b85c9c6"/>
+			<F N="../.git/objects/20/f1489f6c6b5e468aacffcb5fae2dd708cd8bd4"/>
+			<F N="../.git/objects/15/f299352a7c5d668d80f22544eb75c8649cc88f"/>
+			<F N="../.git/objects/93/f67afe8e2366fcab7f747d49b160e616f3724b"/>
+			<F N="../.git/objects/be/f9d242f085e10a751084c2dbc28a4640a61f80"/>
+			<F N="../.git/objects/8c/fc49535f0d46b90a3ee04de9c5d99f7c329bb9"/>
+			<F N="../.git/FETCH_HEAD"/>
+			<F N="hot-foot/flash_eep.crf"/>
+			<F N="hot-foot/flash_eep.o"/>
+			<F N="../.git/HEAD"/>
+			<F N="../.git/logs/HEAD"/>
+			<F N="../.git/index"/>
+			<F N="../Libraries/CMSIS/index.htm"/>
+			<F N="JLinkLog.txt"/>
+			<F N="JLinkSettings.ini"/>
+			<F N="hot-foot/main.crf"/>
+			<F N="hot-foot/main.o"/>
+			<F N="../.git/logs/refs/heads/master"/>
+			<F N="../.git/logs/refs/remotes/pitch/master"/>
+			<F N="../.git/refs/heads/master"/>
+			<F N="../.git/refs/remotes/pitch/master"/>
+			<F N="pitch_e.vpj"/>
+			<F N="pitch_e.vpw"/>
+			<F N="pitch_e.vpwhist"/>
+			<F N="../.git/hooks/post-commit.sample"/>
+			<F N="../.git/hooks/post-receive.sample"/>
+			<F N="../.git/hooks/post-update.sample"/>
+			<F N="../.git/hooks/pre-applypatch.sample"/>
+			<F N="../.git/hooks/pre-commit.sample"/>
+			<F N="../.git/hooks/pre-rebase.sample"/>
+			<F N="../.git/hooks/prepare-commit-msg.sample"/>
+			<F N="Project.uvgui.Administrator"/>
+			<F N="Project.uvgui.Compaq"/>
+			<F N="Project.uvgui_Administrator.bak"/>
+			<F N="Project.uvgui_Compaq.bak"/>
+			<F N="Project.uvopt"/>
+			<F N="Project.uvproj"/>
+			<F N="Project_hot-foot.dep"/>
+			<F N="Project_pitch.dep"/>
+			<F N="Project_STM320518-EVAL.dep"/>
+			<F N="Project_uvopt.bak"/>
+			<F N="Project_uvproj.bak"/>
+			<F N="readme.txt"/>
+			<F N="../usr/readme.txt"/>
+			<F N="hot-foot/startup_stm32f0xx.lst"/>
+			<F N="hot-foot/startup_stm32f0xx.o"/>
+			<F N="hot-foot/STM32f051.axf"/>
+			<F N="hot-foot/STM32f051.hex"/>
+			<F N="hot-foot/STM32f051.htm"/>
+			<F N="../lib/STM32f051.lib"/>
+			<F N="hot-foot/STM32f051.lnp"/>
+			<F N="hot-foot/STM32f051.map"/>
+			<F N="hot-foot/STM32f051.plg"/>
+			<F N="hot-foot/STM32f051.sct"/>
+			<F N="hot-foot/STM32f051.tra"/>
+			<F N="hot-foot/stm32f0xx_it.crf"/>
+			<F N="hot-foot/stm32f0xx_it.o"/>
+			<F N="hot-foot/system_stm32f0xx.crf"/>
+			<F N="hot-foot/system_stm32f0xx.o"/>
+			<F N="../.git/hooks/update.sample"/>
+		</Folder>
+	</Files>
+</Project>

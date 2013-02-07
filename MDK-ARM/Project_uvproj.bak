@@ -7,18 +7,18 @@
 
   <Targets>
     <Target>
-      <TargetName>hot-foot</TargetName>
+      <TargetName>pitch</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STM32F051C8</Device>
+          <Device>STM32F051C6</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <Cpu>IRAM(0x20000000-0x20001FFF) IROM(0x8000000-0x800FFFF) CLOCK(8000000) CPUTYPE("Cortex-M0")</Cpu>
+          <Cpu>IRAM(0x20000000-0x20000FFF) IROM(0x8000000-0x8007FFF) CLOCK(8000000) CPUTYPE("Cortex-M0")</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile>"Startup\ST\STM32F0xx\startup_stm32f0xx.s" ("STM32F0xx Startup Code")</StartupFile>
-          <FlashDriverDll>UL2CM3(-O207 -S0 -C0 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F05x_64 -FS08000000 -FL010000)</FlashDriverDll>
-          <DeviceId>6187</DeviceId>
+          <FlashDriverDll>UL2CM3(-O207 -S0 -C0 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F05x_64 -FS08000000 -FL08000)</FlashDriverDll>
+          <DeviceId>6184</DeviceId>
           <RegisterFile>stm32f0xx.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
@@ -266,12 +266,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x1000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x8000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -296,7 +296,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x8000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -321,7 +321,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x2000</Size>
+                <Size>0x1000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -414,34 +414,9 @@
               <FilePath>..\usr\system_stm32f0xx.c</FilePath>
             </File>
             <File>
-              <FileName>tm1640.c</FileName>
+              <FileName>cog12864.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\usr\tm1640.c</FilePath>
-            </File>
-            <File>
-              <FileName>crc16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\usr\crc16.c</FilePath>
-            </File>
-            <File>
-              <FileName>uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\usr\uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\usr\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>mma8451.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\usr\mma8451.c</FilePath>
-            </File>
-            <File>
-              <FileName>misc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\usr\misc.c</FilePath>
+              <FilePath>..\usr\cog12864.c</FilePath>
             </File>
           </Files>
         </Group>

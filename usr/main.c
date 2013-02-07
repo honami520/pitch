@@ -14,6 +14,11 @@ int main(void)
 {
     systick_init();
     eep_init();         //读取EEPROM内的数据
+    lcd_init();
+    key_init();
+    io_init();
+    pwm_init();
+    ntc_init();
     
     while (1)
     {
@@ -21,24 +26,30 @@ int main(void)
         {
             //1ms进入一次
             time_1ms_flag = 0;
+
         }
 
         if(time_10ms_flag == 1)
         {
             //10ms进入一次
             time_10ms_flag = 0;
+
+            key_scan();
         }
 
         if(time_100ms_flag == 1)
         {
             //100ms进入一次
             time_100ms_flag = 0;
+
+            key_done();
         }
 
         if(time_1s_flag == 1)
         {
             //1s执行一次
             time_1s_flag = 0;
+
         }
     }
 }
